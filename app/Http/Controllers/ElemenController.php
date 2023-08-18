@@ -69,7 +69,7 @@ class ElemenController extends Controller
             ->where('standar', $standar)->get();
             // dd($exist->first()->id);
             $nomor[$key]->selesai = (count($exist) != 0) ? true : false;
-            $nomor[$key]->elemen_id = $exist->first()->id ?? null;
+            $nomor[$key]->penilaian_id = $exist->first()->id ?? null;
 
         }
 

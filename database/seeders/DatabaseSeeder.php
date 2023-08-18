@@ -39,26 +39,26 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        DB::table('puskesmas')->insert([
-            [
-                'nama' => 'Puskesmas Jetis',
-                'alamat' => 'Jl. Pangeran Diponegoro No.91, Bumijo, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55231',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'nama' => 'Puskesmas Mantrijeron',
-                'alamat' => 'Jl. DI Panjaitan No.82, Suryodiningratan, Kec. Mantrijeron, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55141',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
-                'nama' => 'Puskesmas Gondokusuman II',
-                'alamat' => 'Jl. DR. Sardjito No.22, Terban, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55223',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-        ]);
+        // DB::table('puskesmas')->insert([
+        //     [
+        //         'nama' => 'Puskesmas Jetis',
+        //         'alamat' => 'Jl. Pangeran Diponegoro No.91, Bumijo, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55231',
+        //         'created_at' => now(),
+        //         'updated_at' => now(),
+        //     ],
+        //     [
+        //         'nama' => 'Puskesmas Mantrijeron',
+        //         'alamat' => 'Jl. DI Panjaitan No.82, Suryodiningratan, Kec. Mantrijeron, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55141',
+        //         'created_at' => now(),
+        //         'updated_at' => now(),
+        //     ],
+        //     [
+        //         'nama' => 'Puskesmas Gondokusuman II',
+        //         'alamat' => 'Jl. DR. Sardjito No.22, Terban, Kec. Gondokusuman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55223',
+        //         'created_at' => now(),
+        //         'updated_at' => now(),
+        //     ],
+        // ]);
         DB::table('babs')->insert([
             [
                 'judul' => 'Kepemimpinan dan Manajemen Puskesmas',
@@ -96,7 +96,9 @@ class DatabaseSeeder extends Seeder
 
         DB::table('akreditasis')->insert([
             'user_id' => 1,
-            'puskesmas_id' => 1,
+            'nama_puskesmas' => 'Puskesmas Jetis',
+            'kota' => 'Yogyakarta',
+            'provinsi' => 'Daerah Istimewa Yogyakarta',
             'tanggal_sa' => '2023-08-18',
             'created_at' => now(),
             'updated_at' => now()

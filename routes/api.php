@@ -42,12 +42,8 @@ Route::prefix('puskesmas')->group(function () {
     );
 });
 
-Route::prefix('bab')->group(function () {
-    Route::controller(BabController::class)->group(
-        function () {
-            Route::get('/', 'index'); //get bab
-        }
-    );
+Route::controller(BabController::class)->group( function () {
+        Route::get('akreditasi/{id}/bab', 'index'); //get bab
 });
 
 Route::controller(ElemenController::class)->group(
@@ -63,6 +59,7 @@ Route::prefix('akreditasi')->group(function () {
         function () {
             Route::post('/', 'create');
             Route::put('/nilai-akhir', 'updateNilaiAkhir');
+            Route::get('/{id}', 'show');
         }
     );
 });
@@ -71,6 +68,7 @@ Route::prefix('penilaian')->group(function () {
     Route::controller(PenilaianElemenController::class)->group(
         function () {
             Route::post('/', 'create');
+            Route::get('/{id}', 'show');
         }
     );
 });

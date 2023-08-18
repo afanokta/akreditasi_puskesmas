@@ -17,13 +17,22 @@ class AkreditasiController extends Controller
     public function create(Request $req){
         $data = Akreditasi::create([
             'user_id' => Auth::user()->id,
-            'puskesmas_id' => $req['puskesmas_id'],
+            'nama_puskesmas' => $req['nama_puskesmas'],
+            'kota' => $req['kota'],
+            'provinsi' => $req['provinsi'],
             'tanggal_sa' => $req['tanggal_sa']
-
         ]);
         return response()->json([
             'status' => 200,
             'data' => $data
+        ]);
+    }
+
+    public function show($id){
+        $akreditasi = Akreditasi::find($id);
+        return response()->json([
+            'status' => 200,
+            'data' => $akreditasi
         ]);
     }
 

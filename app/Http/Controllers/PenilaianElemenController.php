@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Akreditasi;
 use App\Models\PenilaianElemen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -25,9 +26,19 @@ class PenilaianElemenController extends Controller
             'ketersediaan' => (bool) $req['ketersediaan'],
             'foto' => Storage::disk('public')->url($image_path),
         ]);
+        Akreditasi::updateNilai($req['akreditasi_id']);
         return response()->json([
             'status' => 200,
             'data' => $data
+        ]);
+    }
+
+    public function show ($id){
+        $penilaian = PenilaianElemen::find($id);
+        $penilaian->foto = Storage::disk('public')->url($penilaian->foto);
+        return response()->json([
+            'status' => 200,
+            'data' => $penilaian
         ]);
     }
 }
