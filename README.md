@@ -1,13 +1,19 @@
 ## Panduan Penggunaan
-* instalasi
+* Software Requirement
+    a. XAMPP (sudah include Webserver Apache + PHP + MySQL) --> recomended
+    b. Composer
+* Instalasi
 ```
 git clone https://github.com/afanokta/akreditasi_puskesmas.git
 cd akreditasi_puskesmas
-composer install
+composer install --ignore-platform-req=ext-gd
+```
+* Copy file `.env.example` dan rename menjadi `.env` kemudian sesuaikan konfigurasinya
+* Jalankan perintah
+```
 php artisan migrate
 php artisan db:seed
 php artisan storage:link
-php artisan serve
 ```
 
 * untuk mengulangi migration
