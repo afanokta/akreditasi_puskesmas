@@ -18,11 +18,11 @@ return new class extends Migration
             $table->string('standar');
             $table->integer('no_urut');
             $table->text('elemen');
-            $table->text('regulasi')->default('');
-            $table->text('dokumen_bukti')->default('');
-            $table->text('observasi')->default('');
-            $table->text('wawancara')->default('');
-            $table->text('simulasi')->default('');
+            $table->text('regulasi');
+            $table->text('dokumen_bukti');
+            $table->text('observasi');
+            $table->text('wawancara');
+            $table->text('simulasi');
             $table->timestamps();
             $table->foreign('bab_id')->references('id')->on('babs');
         });
