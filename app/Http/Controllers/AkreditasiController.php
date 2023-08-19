@@ -14,6 +14,14 @@ class AkreditasiController extends Controller
         $this->middleware('auth:api');
     }
 
+    public function index() {
+        $akreditasi = Auth::user()->akreditasis()->get();
+        return response()->json([
+            'status' => 200,
+            'data' => $akreditasi,
+        ]);
+    }
+
     public function create(Request $req){
         $data = Akreditasi::create([
             'user_id' => Auth::user()->id,

@@ -57,6 +57,7 @@ Route::controller(ElemenController::class)->group(
 Route::prefix('akreditasi')->group(function () {
     Route::controller(AkreditasiController::class)->group(
         function () {
+            Route::get('/', 'index');
             Route::post('/', 'create');
             Route::put('/nilai-akhir', 'updateNilaiAkhir');
             Route::get('/{id}', 'show');
@@ -69,6 +70,7 @@ Route::prefix('penilaian')->group(function () {
         function () {
             Route::post('/', 'create');
             Route::get('/{id}', 'show');
+            Route::post('/{id}', 'update');
         }
     );
 });

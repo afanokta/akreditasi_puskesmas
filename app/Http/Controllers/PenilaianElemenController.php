@@ -23,13 +23,30 @@ class PenilaianElemenController extends Controller
             'akreditasi_id' => (int) $req['akreditasi_id'],
             'nilai' => $nilai,
             'fakta_analisis' => $req['fakta_analisis'],
-            'ketersediaan' => (bool) $req['ketersediaan'],
             'foto' => Storage::disk('public')->url($image_path),
         ]);
         Akreditasi::updateNilai($req['akreditasi_id']);
         return response()->json([
             'status' => 200,
             'data' => $data
+        ]);
+    }
+
+    public function update(Request $req, $id){
+        $old = PenilaianElemen::find($id);
+        $image_path = $req->file('foto')->store('image', 'public');
+        $nilai = ($req['nilai'] == 'TDD') ? null : (int) $req['nilai'];
+        $data = $old->update([
+            'elemen_id' => (int) $req['elemen_id'],
+            'akreditasi_id' => (int) $req['akreditasi_id'],
+            'nilai' => $nilai,
+            'fakta_analisis' => $req['fakta_analisis'],
+            'foto' => Storage::disk('public')->url($image_path),
+        ]);
+        Akreditasi::updateNilai($req['akreditasi_id']);
+        return response()->json([
+            'status' => 200,
+            'data' => $old
         ]);
     }
 
