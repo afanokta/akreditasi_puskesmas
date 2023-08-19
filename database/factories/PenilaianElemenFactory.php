@@ -27,7 +27,6 @@ class PenilaianElemenFactory extends Factory
             'akreditasi_id' => 1,
             'nilai' => $faker->randomElement([0, 5, 10, null]),
             'fakta_analisis' => $faker->text(),
-            'ketersediaan' => $faker->boolean(),
             'foto' => 'image-dummy.jpg',
             'created_at' => now(),
             'updated_at' => now(),

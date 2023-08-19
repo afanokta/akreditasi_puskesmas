@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('akreditasi_id');
             $table->integer('nilai')->nullable();
             $table->text('fakta_analisis');
-            $table->boolean('ketersediaan');
             $table->string('foto');
             $table->timestamps();
             $table->foreign('elemen_id')->references('id')->on('elemens');

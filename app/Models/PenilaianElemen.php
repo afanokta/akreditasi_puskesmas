@@ -16,7 +16,6 @@ class PenilaianElemen extends Model
         'akreditasi_id',
         'nilai',
         'fakta_analisis',
-        'ketersediaan',
         'foto',
     ];
 
