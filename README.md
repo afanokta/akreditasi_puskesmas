@@ -7,6 +7,7 @@
 git clone https://github.com/afanokta/akreditasi_puskesmas.git
 cd akreditasi_puskesmas
 composer install --ignore-platform-req=ext-gd
+php artisan jwt:secret
 ```
 * Copy file `.env.example` dan rename menjadi `.env` kemudian sesuaikan konfigurasinya
 * Jalankan perintah
