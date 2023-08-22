@@ -65,6 +65,7 @@ class ElemenController extends Controller
 
         foreach ($nomor as $key => $value) { //fitur progress
             $exist = PenilaianElemen::join('elemens', 'penilaian_elemens.elemen_id', '=', 'elemens.id')
+            ->where('penilaian_elemens.akreditasi_id', $akreditasi_id)
             ->where('no_urut', $value->no_urut)
             ->where('standar', $standar)->get();
             // dd($exist->first()->id);
