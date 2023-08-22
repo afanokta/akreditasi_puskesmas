@@ -84,7 +84,7 @@ class ElemenController extends Controller
         $elemen = Elemen::select('*')->where('bab_id', $bab_id)
         ->where('standar', $standar)->where('kriteria', $kriteria)
         ->where('no_urut', $nomor)
-        ->get();
+        ->get()->first();
         return response()->json([
             'status' => 200,
             'data' => $elemen
