@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Akreditasi;
 use App\Models\PenilaianElemen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class PenilaianElemenController extends Controller
@@ -15,7 +16,6 @@ class PenilaianElemenController extends Controller
     }
 
     public function create(Request $req){
-
         $image_path = $req->file('foto')->store('image', 'public');
         $nilai = ($req['nilai'] == 'TDD') ? null : (int) $req['nilai'];
         $data = PenilaianElemen::create([
@@ -23,8 +23,9 @@ class PenilaianElemenController extends Controller
             'akreditasi_id' => (int) $req['akreditasi_id'],
             'nilai' => $nilai,
             'fakta_analisis' => $req['fakta_analisis'],
-            'foto' => Storage::disk('public')->url($image_path),
+            'foto' => $image_path,
         ]);
+        $data->foto = Storage::disk('public')->url($image_path);
         Akreditasi::updateNilai($req['akreditasi_id']);
         return response()->json([
             'status' => 200,
@@ -34,15 +35,19 @@ class PenilaianElemenController extends Controller
 
     public function update(Request $req, $id){
         $old = PenilaianElemen::find($id);
+        if(Storage::disk('public')->exists($old->foto)){
+            Storage::disk('public')->delete($old->foto);
+        }
         $image_path = $req->file('foto')->store('image', 'public');
         $nilai = ($req['nilai'] == 'TDD') ? null : (int) $req['nilai'];
-        $data = $old->update([
+        $old->update([
             'elemen_id' => (int) $req['elemen_id'],
             'akreditasi_id' => (int) $req['akreditasi_id'],
             'nilai' => $nilai,
             'fakta_analisis' => $req['fakta_analisis'],
-            'foto' => Storage::disk('public')->url($image_path),
+            'foto' => $image_path,
         ]);
+        $old->foto = Storage::disk('public')->url($image_path);
         Akreditasi::updateNilai($req['akreditasi_id']);
         return response()->json([
             'status' => 200,
