@@ -64,11 +64,11 @@ class ElemenController extends Controller
         ->get();
 
         foreach ($nomor as $key => $value) { //fitur progress
-            $exist = PenilaianElemen::join('elemens', 'penilaian_elemens.elemen_id', '=', 'elemens.id')
+            $exist = PenilaianElemen::select('penilaian_elemens.id')
+            ->join('elemens', 'penilaian_elemens.elemen_id', '=', 'elemens.id')
+            ->where('elemens.no_urut', $value->no_urut)
             ->where('penilaian_elemens.akreditasi_id', $akreditasi_id)
-            ->where('no_urut', $value->no_urut)
             ->where('standar', $standar)->get();
-            // dd($exist->first()->id);
             $nomor[$key]->selesai = (count($exist) != 0) ? true : false;
             $nomor[$key]->penilaian_id = $exist->first()->id ?? null;
 
