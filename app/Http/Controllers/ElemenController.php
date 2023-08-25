@@ -68,6 +68,7 @@ class ElemenController extends Controller
             ->join('elemens', 'penilaian_elemens.elemen_id', '=', 'elemens.id')
             ->where('elemens.no_urut', $value->no_urut)
             ->where('penilaian_elemens.akreditasi_id', $akreditasi_id)
+            ->where('kriteria', $kriteria)
             ->where('standar', $standar)->get();
             $nomor[$key]->selesai = (count($exist) != 0) ? true : false;
             $nomor[$key]->penilaian_id = $exist->first()->id ?? null;
