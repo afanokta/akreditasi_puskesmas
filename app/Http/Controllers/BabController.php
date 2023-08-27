@@ -25,7 +25,7 @@ class BabController extends Controller
             $bab[$key]->progress =  round(($currentCount / $countAll) * 100);
             $final_progress += $bab[$key]->progress;
         }
-        $bab['final_progress'] = round($final_progress/5);
+        $bab[0]['final_progress'] = round($final_progress/5);
         return response()->json([
             'status' => 200,
             'data' => $bab
