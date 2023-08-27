@@ -30,7 +30,7 @@ class ElemenController extends Controller
             $currentCount = PenilaianElemen::join('elemens', 'penilaian_elemens.elemen_id', '=', 'elemens.id')
             ->where('akreditasi_id', $akreditasi_id)
             ->where('standar', $value->standar)->count();
-            $standar[$key]->progress =  ($currentCount / $countAll) * 100;
+            $standar[$key]->progress =  round(($currentCount / $countAll) * 100);
         }
         return response()->json([
             'status' => 200,
@@ -49,7 +49,7 @@ class ElemenController extends Controller
             $currentCount = PenilaianElemen::join('elemens', 'penilaian_elemens.elemen_id', '=', 'elemens.id')
             ->where('akreditasi_id', $akreditasi_id)
             ->where('kriteria', $value->kriteria)->count();
-            $kriteria[$key]->progress =  ($currentCount / $countAll) * 100;
+            $kriteria[$key]->progress = round(($currentCount / $countAll) * 100);
         }
 
         return response()->json([
