@@ -61,6 +61,7 @@ Route::prefix('akreditasi')->group(function () {
             Route::post('/', 'create');
             Route::put('/nilai-akhir', 'updateNilaiAkhir');
             Route::get('/{id}', 'show');
+            Route::get('/{id}/download', 'download');
         }
     );
 });

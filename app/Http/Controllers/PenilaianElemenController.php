@@ -63,4 +63,18 @@ class PenilaianElemenController extends Controller
             'data' => $penilaian
         ]);
     }
+
+    public function excel($id) {
+        $data = Akreditasi::find($id);
+        return view('hasilPenilaian', ['data' => $data]);
+    }
+
+    public function bab($akreditasi, $bab) {
+        $data = PenilaianElemen::query()
+        ->join('elemens', 'penilaian_elemens.elemen_id', '=', 'elemens.id')
+        ->where('akreditasi_id', $akreditasi)
+        ->where('bab_id', $bab)->get();
+        // dd($data);
+        return view('penilaianPerBab', ['data' => $data]);
+    }
 }

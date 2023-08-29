@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AkreditasiExport;
 use Illuminate\Http\Request;
 use App\Models\Akreditasi;
 use App\Models\PenilaianElemen;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AkreditasiController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth:api')->except('download');
     }
 
     public function index() {
@@ -67,5 +69,9 @@ class AkreditasiController extends Controller
             'status' => 200,
             'data' => $akreditasi
         ]);
+    }
+
+    public function download($id) {
+        return Excel::download(new AkreditasiExport($id), 'akreditasi.xlsx');
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PenilaianElemenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,6 @@ Route::get('/db-fresh', function() {
 Route::get('/seeder', function() {
     Artisan::call('db:seed');
 });
+
+Route::get('/excel/{id}', [PenilaianElemenController::class, 'excel']);
+Route::get('/excel/akreditasi/{akreditasi}/bab/{id}', [PenilaianElemenController::class, 'bab']);
