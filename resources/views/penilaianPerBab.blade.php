@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ "BAB ". $data[0]->bab_id }}</title>
+    <title>{{ "BAB ". $bab }}</title>
 </head>
 <body>
     <table>
         <tr>
             <th>BAB : </th>
-            <td>{{ $data[0]->bab_id }}</td>
+            <td>{{ $bab }}</td>
         </tr>
     </table>
     <table>

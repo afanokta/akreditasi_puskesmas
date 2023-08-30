@@ -25,17 +25,17 @@ class PenilaianPerBabViewSheet implements FromView, WithTitle
      public function title() : string {
         return "BAB " . $this->bab;
      }
-     
+
     public function view() : View {
 
         $data = PenilaianElemen::
         join('elemens', 'penilaian_elemens.elemen_id', '=', 'elemens.id')
-        ->where('akreditasi_id', $this->akreditasi)
-        ->where('bab_id', $this->bab)->get();
-        // $storage = Storage::disk('public');
+        ->where('penilaian_elemens.akreditasi_id', $this->akreditasi)
+        ->where('elemens.bab_id', $this->bab)->get();
         $storage = env('APP_URL').'/storage';
         return view('penilaianPerBab', [
             'data' => $data,
+            'bab' => $this->bab,
             'storage' => $storage
         ]);
     }
