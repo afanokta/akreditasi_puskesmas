@@ -15,6 +15,10 @@ use App\Http\Controllers\PenilaianElemenController;
 |
 */
 
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
