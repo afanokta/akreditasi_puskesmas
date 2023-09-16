@@ -11,7 +11,7 @@ class BabController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware(['auth:api', 'is_verified']);
     }
 
     public function index($akreditasi_id) {

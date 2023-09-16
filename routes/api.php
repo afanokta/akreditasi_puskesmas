@@ -28,6 +28,8 @@ use App\Models\Puskesmas;
 
 
 Route::controller(AuthController::class)->group(function () {
+    Route::get('verification/{token}', 'verificationHandler');
+    Route::post('resend-verification', 'resendVerification');
     Route::post('login', 'login');
     Route::post('register', 'register');
     Route::post('logout', 'logout');

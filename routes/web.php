@@ -37,3 +37,7 @@ Route::get('/seeder', function() {
 
 Route::get('/excel/{id}', [PenilaianElemenController::class, 'excel']);
 Route::get('/excel/akreditasi/{akreditasi}/bab/{id}', [PenilaianElemenController::class, 'bab']);
+Route::get('/email-verif', function() {
+    return view('emailVerif');
+});
+
