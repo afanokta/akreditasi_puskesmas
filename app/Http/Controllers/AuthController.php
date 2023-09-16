@@ -117,6 +117,7 @@ class AuthController extends Controller
         $user = User::where('email', $req['email'])->first();
         $token = Str::random(64);
         $user->verification_token = $token;
+        $user->save;
         Mail::to($user)->send(new SendEmail($token));
         return response()->json([
             'status' => 200,

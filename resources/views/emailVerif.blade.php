@@ -124,7 +124,7 @@
         <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
           <tr>
             <td align="center" valign="top" style="padding: 36px 24px;">
-                <img src={{ asset('LAFKILOGO.png') }} alt="Logo" border="0" style="display: block; max-width: 75%; min-width: 48px;">
+                <img src={{ $message->embed(public_path() . '/LAFKILOGO.png') }} alt="Logo" border="0" style="display: block; max-width: 75%; min-width: 48px;">
             </td>
           </tr>
         </table>
